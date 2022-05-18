@@ -1,0 +1,21 @@
+#p1 {
+	font-size: 80px;
+	text-align: center;
+	background-color: aqua;
+}
+#links {
+	background-color: aquamarine;
+	text-align: center;
+	font-size: 55px;
+	margin: 0% 20% 0% 20%;
+}
+
+#p2 {
+	font-size: x-large;
+	text-align: center;
+	align-items: center;
+	background-color: aqua;
+}
+body {
+	background-color: greenyellow;
+}
