@@ -19,7 +19,7 @@ const CreateCard = (props) => {
 			const body = { message: message, type: dropdownType };
 			const header = { authorization: 'Bearer ' + localStorage.getItem('token') };
 
-			// const response = await axios.post('https://good-clean-laundromat.herokuapp.com/api/auth/', body);
+			// const response = await axiosInstance.post('/auth/signin', body);
 
 			window.location = '/';
 		} catch (error) {
