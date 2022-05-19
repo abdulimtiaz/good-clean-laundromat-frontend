@@ -1,7 +1,9 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import '../stylesheets/CustomerHome.css';
 import CreateCard from './CreateCard.js';
 import { Button, Card, Spinner, Form } from 'react-bootstrap';
+import axiosInstance from '../config';
+
 const CustomerHome = () => {
 	const [ cards, setCards ] = useState(null);
 	const [ showForm, setShowForm ] = useState(false);
@@ -11,6 +13,26 @@ const CustomerHome = () => {
 	const handleChange = () => {
 		setShowForm(!showForm);
 	};
+
+	useEffect(() => {
+		try {
+			const header = { authorization: 'Bearer ' + localStorage.getItem('token') };
+
+			axiosInstance
+				.get('/cards/getUserCards', {
+					headers: header
+				})
+				.then((result) => {
+					setCards(result.data);
+					console.log(cards);
+					console.log(result.data);
+				});
+			// setCards()
+		} catch (error) {
+			console.log('error while retrieving cards ');
+			console.error(error.message);
+		}
+	}, []);
 
 	return (
 		<div>
@@ -35,16 +57,20 @@ const CustomerHome = () => {
 				</div>
 				{cards ? (
 					<div className="cards">
-						<Card>
-							<Card.Header as="h5">Featured</Card.Header>
-							<Card.Body>
-								<Card.Title>Special title treatment</Card.Title>
-								<Card.Text>
-									With supporting text below as a natural lead-in to additional content.
-								</Card.Text>
-								<Button variant="primary">Go somewhere</Button>
-							</Card.Body>
-						</Card>
+						{cards.map((currentCard) => (
+							<Card key={currentCard.id} className="card_single">
+								<Card.Header as="h5">{currentCard.creator}</Card.Header>
+								<Card.Body>
+									<Card.Title>{currentCard.type}</Card.Title>
+									<Card.Text>{currentCard.message}</Card.Text>
+									{/* <Button variant="primary">Go somewhere</Button> */}
+								</Card.Body>
+							</Card>
+						))}
+						{showForm ? (
+							// message, type ={ },
+							<CreateCard value={showForm} onChange={handleChange} />
+						) : null}
 					</div>
 				) : (
 					<div className="no_cards">
