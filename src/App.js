@@ -17,7 +17,7 @@ function App() {
 	const [ userType, setUserType ] = useState();
 	useEffect(
 		() => {
-			const loggedInUser = localStorage.getItem('user');
+			const loggedInUser = localStorage.getItem('token');
 			const loggedInUserType = localStorage.getItem('type');
 
 			if (loggedInUser) {

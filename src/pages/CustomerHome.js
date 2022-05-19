@@ -1,8 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import '../stylesheets/CustomerHome.css';
-import { Button, Card, Spinner } from 'react-bootstrap';
+import CreateCard from './CreateCard.js';
+import { Button, Card, Spinner, Form } from 'react-bootstrap';
 const CustomerHome = () => {
 	const [ cards, setCards ] = useState(null);
+	const [ showForm, setShowForm ] = useState(false);
+	const [ dropdownType, setDropdownType ] = useState('');
+	const dropdownTypeInput = useRef(null);
+
+	const handleChange = () => {
+		setShowForm(!showForm);
+	};
 
 	return (
 		<div>
@@ -11,6 +19,17 @@ const CustomerHome = () => {
 			</div>
 
 			<div className="content">
+				<div className="create_card">
+					<button
+						type="button"
+						className="btn btn-outline-dark"
+						onClick={() => {
+							setShowForm(true);
+						}}
+					>
+						Create Card
+					</button>
+				</div>
 				<div>
 					<h1 className="heading">My Notes</h1>
 				</div>
@@ -32,6 +51,10 @@ const CustomerHome = () => {
 						<Spinner animation="grow" />
 						<span>No cards to show at the moment!</span>
 						<Spinner animation="grow" />
+						{showForm ? (
+							// message, type ={ },
+							<CreateCard value={showForm} onChange={handleChange} />
+						) : null}
 					</div>
 				)}
 			</div>
