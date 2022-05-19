@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import '../stylesheets/Signup.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { useStateValue } from '../StateProvider';
@@ -22,6 +22,7 @@ const Signup = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ userState, setUserState ] = useState();
+	const [ accountType, setAccountType ] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -43,6 +44,7 @@ const Signup = () => {
 				accessCode: accessCodeInput.current.value,
 				name: firstNameInput.current.value
 			};
+			console.log(body);
 			const response = await axiosInstance.post('/auth/signup', body);
 
 			setUserState(response.data);
@@ -105,21 +107,28 @@ const Signup = () => {
 					<Form.Group>
 						<Form.Label>Account Type</Form.Label>
 
-						<Form.Select aria-label="Default select example" ref={accountTypeInput}>
+						<Form.Select
+							aria-label="Default select example"
+							ref={accountTypeInput}
+							onChange={({ target }) => setAccountType(target.value)}
+						>
 							<option>Open this select menu</option>
 							<option value="Customer">Customer</option>
 							<option value="Employee">Employee</option>
 						</Form.Select>
 					</Form.Group>
+					{accountType == 'Employee' ? (
+						<div>
+							<Form.Group className="mb-3" controlId="formBasicAccessCode">
+								<Form.Label>Access Code</Form.Label>
+								<Form.Control type="accesscode" placeholder="*****" ref={accessCodeInput} />
+							</Form.Group>
+						</div>
+					) : (
+						<br />
+					)}
 
-					<div>
-						<Form.Group className="mb-3" controlId="formBasicAccessCode">
-							<Form.Label>Access Code</Form.Label>
-							<Form.Control type="accesscode" placeholder="*****" ref={accessCodeInput} />
-						</Form.Group>
-					</div>
-
-					<Button variant="primary" type="submit">
+					<Button variant="dark" type="submit" className="login_button">
 						Submit
 					</Button>
 				</Form>

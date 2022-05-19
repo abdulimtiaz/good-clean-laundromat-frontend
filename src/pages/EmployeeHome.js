@@ -1,27 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import '../stylesheets/EmployeeHome.css';
-import { Button } from 'react-bootstrap';
-import { Card } from 'react-bootstrap';
+import { Button, Card, Spinner, Cards } from 'react-bootstrap';
 
 const EmployeeHome = () => {
+	const [ cards, setCards ] = useState(null);
+
 	return (
 		<div>
-			<div id="p1">
-				Local Laundromat<br />
-				Employee Homepage<br />
+			<div className="heading">
+				<h1>Employee Homepage</h1>
 			</div>
 
-			<div id="p2">
-				Employee name
-				<input type="text" id="employeename" className="order" placeholder="Lily" readOnly />
-			</div>
-
-			<div id="p">
-				<ol id="p">
-					List of orders:
-					<li>
-						<Card className="text-center">
-							<Card.Header>Featured</Card.Header>
+			<div className="content">
+				<div>
+					<h1 className="heading">My Notes</h1>
+				</div>
+				{cards ? (
+					<div className="cards">
+						<Card>
+							<Card.Header as="h5">Featured</Card.Header>
 							<Card.Body>
 								<Card.Title>Special title treatment</Card.Title>
 								<Card.Text>
@@ -29,25 +26,16 @@ const EmployeeHome = () => {
 								</Card.Text>
 								<Button variant="primary">Go somewhere</Button>
 							</Card.Body>
-							<Card.Footer className="text-muted">2 days ago</Card.Footer>
 						</Card>
-					</li>
-				</ol>
+					</div>
+				) : (
+					<div className="no_cards">
+						<Spinner animation="grow" />
+						<span>No cards to show at the moment!</span>
+						<Spinner animation="grow" />
+					</div>
+				)}
 			</div>
-			<p id="p4">
-				<a id="h1" href="p7.html">
-					Report a Problem<br />
-				</a>
-
-				<a id="h1" href="p1.html">
-					Homepage<br />
-				</a>
-				{/* <Link to="/">
-					<Button variant="contained" className={classes.buttonCancel}>
-						Cancel
-					</Button>
-				</Link> */}
-			</p>
 		</div>
 	);
 };
