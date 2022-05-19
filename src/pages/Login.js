@@ -1,8 +1,7 @@
 import React, { Fragment, useRef, useState } from 'react';
 // import '../stylesheets/Signup.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
-
-const axios = require('axios');
+import axiosInstance from '../config';
 
 const Login = () => {
 	// const [ count, setCount ] = useState(0);
@@ -32,7 +31,7 @@ const Login = () => {
 				email: emailInput.current.value,
 				password: passwordInput.current.value
 			};
-			const response = await axios.post('https://good-clean-laundromat.herokuapp.com/api/auth/signin', body);
+			const response = await axiosInstance.post('/auth/signin', body);
 			setUserState(response.data.token);
 			setUserType(response.data.type);
 
