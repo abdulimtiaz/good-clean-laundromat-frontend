@@ -3,8 +3,7 @@ import '../stylesheets/Signup.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
-
-const axios = require('axios');
+import axiosInstance from '../config';
 
 const Signup = () => {
 	// const [ count, setCount ] = useState(0);
@@ -46,7 +45,7 @@ const Signup = () => {
 				name: firstNameInput.current.value
 			};
 			console.log(body);
-			const response = await axios.post('https://good-clean-laundromat.herokuapp.com/api/auth/signup', body);
+			const response = await axiosInstance.post('/auth/signup', body);
 
 			setUserState(response.data);
 			localStorage.setItem('user', response.data);
