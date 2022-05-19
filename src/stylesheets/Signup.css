@@ -25,3 +25,9 @@ input {
 .signup-form {
 	margin: 0% 20% 0% 20%;
 }
+
+.login_button:hover {
+	background-color: #f6d4ba;
+	color: black;
+	border: none;
+}

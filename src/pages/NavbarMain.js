@@ -31,7 +31,7 @@ const NavbarMain = () => {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
-							<Nav.Link to="/">Home Page</Nav.Link>
+							<Nav.Link href="/">Home Page</Nav.Link>
 							{/* <Nav.Link href="#pricing">Sign</Nav.Link> */}
 							<NavDropdown title="Dropdown" id="collasible-nav-dropdown">
 								{/* <NavDropdown.Item href="/Login"></NavDropdown.Item> */}
