@@ -1,45 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import '../stylesheets/CustomerHome.css';
-
+import { Button, Card, Spinner } from 'react-bootstrap';
 const CustomerHome = () => {
+	const [ cards, setCards ] = useState(null);
+
 	return (
-		<Fragment>
-			<p id="p1">
-				Local Laundromat<br />
-				Customer Home
-			</p>
+		<div>
+			<div className="heading">
+				<h1>Customer Home</h1>
+			</div>
 
-			<p id="p2">
-				Customer Name:
-				<input type="text" id="customername" readOnly />
-				<br />
-				<br />
-			</p>
-			<p id="p3">
-				<a id="h1" href="p8.html">
-					Request pickup<br />
-				</a>
-				<br />
-
-				<p id="p5">
-					Order Status
-					<input type="text" id="p5" placeholder="No order to show" readOnly />
-				</p>
-			</p>
-			<br />
-			<br />
-			<br />
-
-			<p id="p4">
-				<a id="h1" href="p7.html">
-					Report a Problem<br />
-				</a>
-
-				<a id="h1" href="p1.html">
-					Homepage<br />
-				</a>
-			</p>
-		</Fragment>
+			<div className="content">
+				<div>
+					<h1 className="heading">My Notes</h1>
+				</div>
+				{cards ? (
+					<div className="cards">
+						<Card>
+							<Card.Header as="h5">Featured</Card.Header>
+							<Card.Body>
+								<Card.Title>Special title treatment</Card.Title>
+								<Card.Text>
+									With supporting text below as a natural lead-in to additional content.
+								</Card.Text>
+								<Button variant="primary">Go somewhere</Button>
+							</Card.Body>
+						</Card>
+					</div>
+				) : (
+					<div className="no_cards">
+						<Spinner animation="grow" />
+						<span>No cards to show at the moment!</span>
+						<Spinner animation="grow" />
+					</div>
+				)}
+			</div>
+		</div>
 	);
 };
 
