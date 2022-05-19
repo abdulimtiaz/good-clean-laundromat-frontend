@@ -30,7 +30,7 @@ const Login = () => {
 				email: emailInput.current.value,
 				password: passwordInput.current.value
 			};
-			const response = await axios.post('/auth/signin', body);
+			const response = await axiosInstance.post('/auth/signin', body);
 			setUserState(response.data.token);
 			setUserType(response.data.type);
 
