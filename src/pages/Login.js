@@ -7,10 +7,11 @@ const Login = () => {
 	// const [ count, setCount ] = useState(0);
 
 	const [ email, setEmail ] = useState('');
+	const [ errorMsg, setErrorMsg ] = useState('');
+
 	const [ password, setPassword ] = useState('');
 	const [ userState, setUserState ] = useState();
 	const [ userType, setUserType ] = useState();
-
 	const emailInput = useRef(null);
 	const passwordInput = useRef(null);
 
@@ -36,7 +37,7 @@ const Login = () => {
 
 			// console.log(userState);
 			// store the user in localStorage
-			localStorage.setItem('user', response.data.token);
+			localStorage.setItem('token', response.data.token);
 			localStorage.setItem('type', response.data.type);
 
 			console.log(response.data.token);
@@ -45,6 +46,7 @@ const Login = () => {
 			window.location = '/';
 		} catch (err) {
 			console.error(err.message);
+			setErrorMsg(true);
 		}
 	};
 	return (
@@ -74,7 +76,14 @@ const Login = () => {
 							onChange={({ target }) => setPassword(target.value)}
 						/>
 					</Form.Group>
-
+					{errorMsg ? (
+						<div class="alert alert-danger" role="alert">
+							Please type a valid Email/Password.
+							{/* <a href="#" class="alert-link">
+								an example link
+							</a>. Give it a click if you like. */}
+						</div>
+					) : null}
 					<Button variant="dark" type="submit" className="login_button">
 						Submit
 					</Button>

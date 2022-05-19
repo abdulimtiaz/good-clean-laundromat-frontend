@@ -6,7 +6,7 @@ const NavbarMain = () => {
 	const [ userState, setUserState ] = useState();
 
 	useEffect(() => {
-		const loggedInUser = localStorage.getItem('user');
+		const loggedInUser = localStorage.getItem('token');
 		// const loggedInUserType = localStorage.getItem('type');
 
 		if (loggedInUser) {

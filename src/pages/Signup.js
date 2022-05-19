@@ -36,24 +36,22 @@ const Signup = () => {
 		*/
 		// console.log(firstNameInput.current.value);
 		try {
+			const accessCodeTemp = accountType == 'Customer' ? '' : accessCodeInput.current.value;
 			const body = {
 				email: emailInput.current.value,
 				password: passwordInput.current.value,
 				phoneNumber: phoneInput.current.value,
 				type: accountTypeInput.current.value,
-				accessCode: accessCodeInput.current.value,
+				accessCode: accessCodeTemp,
 				name: firstNameInput.current.value
 			};
 			console.log(body);
 			const response = await axiosInstance.post('/auth/signup', body);
 
-			setUserState(response.data);
-			localStorage.setItem('user', response.data);
-			console.log('it wokred ');
-			console.log(response.data);
 			window.location = '/';
 		} catch (err) {
 			console.error(err.message);
+			console.log('error signing up');
 		}
 	};
 	return (
