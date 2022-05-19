@@ -41,7 +41,8 @@ const Signup = () => {
 				password: passwordInput.current.value,
 				phoneNumber: phoneInput.current.value,
 				type: accountTypeInput.current.value,
-				accessCode: accessCodeInput.current.value
+				accessCode: accessCodeInput.current.value,
+				name: firstNameInput.current.value
 			};
 			const response = await axios.post('https://good-clean-laundromat.herokuapp.com/api/auth/signup', body);
 

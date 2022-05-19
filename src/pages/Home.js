@@ -17,12 +17,12 @@ const Home = () => {
 
 			<div id="links">
 				<div className="d-grid gap-2">
-					<Button href="/Login" variant="primary" size="lg">
+					<Button href="/Login" variant="dark" size="lg" className="login_button">
 						Login
 					</Button>
 
 					<Button href="/Signup" variant="secondary" size="lg">
-						Customer Signup<br />
+						Customer Signup
 					</Button>
 				</div>
 

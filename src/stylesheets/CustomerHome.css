@@ -1,35 +1,14 @@
-#p1{
-    text-align: center;
-    font-size: 80px;
-    background-color: aqua;
+.heading {
+	text-align: center;
+	font-size: larger;
+	margin-top: 2%;
+}
+.content {
+	margin: 3% 5% 5% 5%;
 }
 
-#p2{
-    text-align: center;
-    font-size: 50px;
-    background-color: aqua;
-
-}
-
-#customername{
-    height: 35px;
-    width: 400px;
-
-}
-
-#p3{
-    text-align: center;
-    font-size: 50px;
-    background-color: aqua;
-}
-
-#p4{
-    text-align: center;
-    font-size: 50px;
-    background-color: aqua;
-}
-#p5{
-    text-align: center;
-    font-size: 50px;
-    
+.no_cards {
+	font-size: 200%;
+	text-align: center;
+	align-items: center;
 }
