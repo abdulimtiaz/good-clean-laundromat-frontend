@@ -72,7 +72,7 @@ const Signup = () => {
 					</Form.Group>
 					<Form.Group className="mb-3" controlId="formBasicPhone">
 						<Form.Label>Phone #</Form.Label>
-						<Form.Control type="phone" placeholder="347-123-4567" ref={phoneInput} />
+						<Form.Control type="number" maxLength="9" placeholder="347-123-4567" ref={phoneInput} />
 					</Form.Group>
 					<Form.Group className="mb-3" controlId="formBasicAddress">
 						<Form.Label>Address</Form.Label>

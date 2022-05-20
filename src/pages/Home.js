@@ -22,7 +22,7 @@ const Home = () => {
 					</Button>
 
 					<Button href="/Signup" variant="secondary" size="lg">
-						Customer Signup
+						Signup
 					</Button>
 				</div>
 
